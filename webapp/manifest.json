@@ -1,0 +1,189 @@
+{
+  "_version": "1.73.1",
+  "sap.app": {
+    "id": "com.upao.s4publicupaosalmonitorreservas",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.0",
+      "toolsId": "2fb3f3ac-576e-464c-9e5e-2e1c6393b6ba"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zsb_sal_api_monreserv_hd/srvd/sap/zsd_sal_api_monreserv_hd/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "MonReserva-Visualizar": {
+          "semanticObject": "MonReserva",
+          "action": "Visualizar",
+          "title": "{{MonReserva-Visualizar.flpTitle}}",
+          "subTitle": "{{MonReserva-Visualizar.flpSubTitle}}",
+          "icon": "sap-icon://monitor-payments",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.12",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.upao.s4publicupaosalmonitorreservas.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ReservList",
+          "target": "ReservList"
+        },
+        {
+          "pattern": "Reserv({key}):?query:",
+          "name": "ReservObjectPage",
+          "target": "ReservObjectPage"
+        },
+        {
+          "pattern": "Reserv({key})/_Item({key2}):?query:",
+          "name": "ItemObjectPage",
+          "target": "ItemObjectPage"
+        }
+      ],
+      "targets": {
+        "ReservList": {
+          "type": "Component",
+          "id": "ReservList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Reserv",
+              "variantManagement": "Page",
+              "navigation": {
+                "Reserv": {
+                  "detail": {
+                    "route": "ReservObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ReservObjectPage": {
+          "type": "Component",
+          "id": "ReservObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Reserv",
+              "navigation": {
+                "_Item": {
+                  "detail": {
+                    "route": "ItemObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ItemObjectPage": {
+          "type": "Component",
+          "id": "ItemObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Reserv/_Item"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "generationParameters": {
+    "generationDate": "Mon Dec 22 2025 16:45:11 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "SAP System (ABAP On-Premise)",
+    "metadataFilename": "",
+    "serviceUrl": "https://my425627.s4hana.cloud.sap/sap/opu/odata4/sap/zsb_sal_api_monreserv_hd/srvd/sap/zsd_sal_api_monreserv_hd/0001/",
+    "appName": "s4public_upao_sal_monitor_reservas",
+    "appTitle": "Monitor de Reservas",
+    "appDescription": "Monitor de Reservas",
+    "appNamespace": "com.upao",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.136.12",
+    "enableCodeAssist": false,
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.20.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "Reserv"
+      },
+      {
+        "type": "Navigation Entity",
+        "value": "_Item"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}
